@@ -13,9 +13,10 @@ class Photo < ActiveRecord::Base
     def self.import_nearby_photo_from_instagram(lat, lng)
       Instagram.media_search(lat, lng).map do |nearby_photos|
         p = Photo.new
-        binding.pry
         p.latitude = nearby_photos["location"]["latitude"]
-        p.name = nearby_photos["location"]["name"]
+        p.image_url = nearby_photos["images"]["standard_resolution"]["url"]
+        p.save
+        p
       end
     end
 end

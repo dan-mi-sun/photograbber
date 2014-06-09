@@ -36,12 +36,12 @@ describe Photo do
     it "should make location objects" do
       expect(@nearby_photos.length).to eq(19)
       expect(@nearby_photos.first.is_a? Photo).to eq(true)
-      expect(@nearby_photos.first.latitude).to eq(51.522915937)
-      expect(@nearby_photos.first.name).to eq("MOO HQ")
+      expect(@nearby_photos.first.image_url).to eq("http://scontent-b.cdninstagram.com/hphotos-xfp1/t51.2885-15/10299784_782712225093481_1702245848_n.jpg")
+      expect(@nearby_photos.first.latitude).to eq(51.5163)
     end
 
     it "should save the photos in the database" do
-      expect(Photo.count).to eq(20)
+      expect(Photo.count).to eq(19)
     end
   end
 end
