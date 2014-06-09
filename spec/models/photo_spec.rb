@@ -19,7 +19,7 @@ describe Photo do
     end
 
     it "should save the photos in the database" do
-      expect(Photo.count).to eq(20)
+      expect(Photo.count).to eq(19)
     end
   end
 
