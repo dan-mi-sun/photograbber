@@ -15,4 +15,5 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 2.99.0'
   gem 'pry'
+  gem 'mocha'
 end
