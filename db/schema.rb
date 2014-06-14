@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613102535) do
+ActiveRecord::Schema.define(version: 20140613152057) do
 
   create_table "photos", force: true do |t|
     t.string   "image_url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140613102535) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "location"
+    t.string   "name"
   end
 
 end

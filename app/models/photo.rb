@@ -1,5 +1,10 @@
 class Photo < ActiveRecord::Base
 
+  # validates :location, :presence => true
+
+  geocoded_by :location
+  after_validation :geocode
+
   def self.import_popular_photos_from_instagram
     Instagram.media_popular.map do |photo_info|
       p = Photo.new
@@ -10,12 +15,14 @@ class Photo < ActiveRecord::Base
     end
   end
 
-    def self.import_nearby_photo_from_instagram(lat, lng)
-      Instagram.media_search(lat, lng).map do |nearby_photos|
+    def self.import_nearby_photo_from_instagram(location)
+      latlng = Geocoder.search(location)
+      Instagram.media_search(latlng).map do |nearby_photos|
         p = Photo.new
         p.latitude = nearby_photos["location"]["latitude"]
         p.image_url = nearby_photos["images"]["standard_resolution"]["url"]
-        p.save
+        p.name = nearby_photos["location"]["name"]
+        p.save!
         p
       end
     end
